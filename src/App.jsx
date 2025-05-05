@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/login';
 import RequireAuth from './components/RequireAuth';
 
+
 function App() {
   return (
     <BrowserRouter>
