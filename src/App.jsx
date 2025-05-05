@@ -57,7 +57,7 @@ function App() {
           }
         />
         <Route
-          path="/metodospago"
+          path="/metodos-pago"
           element={
         <RequireAuth>
         <MetodosPago />
