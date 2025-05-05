@@ -7,6 +7,7 @@ import RequireAuth from "./components/RequireAuth";
 import Categorias from "./pages/Categorias";
 import Productos from "./pages/Productos";
 
+
 function App() {
   return (
     <BrowserRouter>
