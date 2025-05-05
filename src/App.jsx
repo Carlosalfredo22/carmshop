@@ -6,7 +6,7 @@ import Login from "./pages/login";
 import RequireAuth from "./components/RequireAuth";
 import Categorias from "./pages/Categorias";
 import Productos from "./pages/Productos";
-
+import MetodosPago from './pages/MetodosPago'; 
 
 function App() {
   return (
@@ -54,6 +54,14 @@ function App() {
             <RequireAuth>
               <Productos />
             </RequireAuth>
+          }
+        />
+        <Route
+          path="/metodospago"
+          element={
+        <RequireAuth>
+        <MetodosPago />
+        </RequireAuth>
           }
         />
       </Routes>
