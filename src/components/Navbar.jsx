@@ -18,7 +18,6 @@ function Navbar() {
         <li><Link to="/about" className="nav-link">Acerca de</Link></li>
         <li><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
         <li><Link to="/login" onClick={handleLogout} className="nav-link">Cerrar sesión</Link></li>
-        <li><Link to="/metodos-pago" className="nav-link">Métodos de Pago</Link></li>
       </ul>
     </nav>
   );
