@@ -15,8 +15,6 @@ function Navbar() {
     <nav className="navbar">
       <ul className="nav-list">
         <li><Link to="/" className="nav-link">Inicio</Link></li>
-        <li><Link to="/about" className="nav-link">Acerca de</Link></li>
-        <li><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
         <li><Link to="/login" onClick={handleLogout} className="nav-link">Cerrar sesión</Link></li>
         <li><Link to="/Categorias" className="nav-link">Categorias</Link></li>
         <li><Link to="/productos" className="nav-link">Productos</Link></li>
