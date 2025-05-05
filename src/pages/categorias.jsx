@@ -38,7 +38,7 @@ function Categorias() {
  
   return (
     <div>
-      <Navbar /> {/* Muestra la barra de navegación */}
+      <Navbar /> {/* Muestra la barra de navegación,hola */}
       <div className="container"> {/* puedes definir este estilo en Home.css */}
         <h1>Categorías</h1>
  
