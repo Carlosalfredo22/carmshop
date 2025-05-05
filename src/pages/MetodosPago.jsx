@@ -64,7 +64,7 @@ function MetodosPago() {
                 </li>
               ))
             ) : (
-              <li>No hay métodos de pago disponibles.H</li>
+              <li>No hay métodos de pago disponibles.H </li>
             )}
           </ul>
         )}
