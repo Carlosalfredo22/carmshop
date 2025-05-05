@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/login";
 import RequireAuth from "./components/RequireAuth";
 import Categorias from "./pages/Categorias";
+import Productos from "./pages/Productos";
 
 function App() {
   return (
@@ -38,15 +39,23 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route
+          path="/categorias"
+          element={
+            <RequireAuth>
+              <Categorias />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/productos"
+          element={
+            <RequireAuth>
+              <Productos />
+            </RequireAuth>
+          }
+        />
       </Routes>
-      <Route
-        path="/categorias"
-        element={
-          <RequireAuth>
-            <Categorias />
-          </RequireAuth>
-        }
-      />
     </BrowserRouter>
   );
 }

@@ -4,6 +4,7 @@ import '../style/Home.css'; // Reutilizamos los estilos
 
 
 
+
 function Navbar() {
   const navigate = useNavigate();
 
@@ -21,6 +22,7 @@ function Navbar() {
         <li><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
         <li><Link to="/login" onClick={handleLogout} className="nav-link">Cerrar sesión</Link></li>
         <li><Link to="/Categorias" className="nav-link">Categorias</Link></li>
+        <li><Link to="/productos" className="nav-link">Productos</Link></li> 
       </ul>
     </nav>
   );
