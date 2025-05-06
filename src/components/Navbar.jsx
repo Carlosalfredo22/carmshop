@@ -19,6 +19,7 @@ function Navbar() {
         <li><Link to="/Categorias" className="nav-link">Categorias</Link></li>
         <li><Link to="/productos" className="nav-link">Productos</Link></li>
         <li><Link to="/metodos-pago" className="nav-link">Métodos de Pago</Link></li>
+          {/*Pagos*/}
       </ul>
     </nav>
   );
