@@ -64,6 +64,7 @@ function App() {
         </RequireAuth>
           }
         />
+        {/*Pagos*/}
       </Routes>
     </BrowserRouter>
   );
