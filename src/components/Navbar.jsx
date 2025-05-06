@@ -24,4 +24,6 @@ function Navbar() {
   );
 }
 
+<Route path="/detalles-pedido" element={<DetallesPedido />} />
+
 export default Navbar;
