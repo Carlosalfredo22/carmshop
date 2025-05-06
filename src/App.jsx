@@ -9,7 +9,7 @@ import Productos from "./pages/Productos";
 import MetodosPago from "./pages/MetodosPago";
 import Pagos from "./pages/Pagos";
 import Pedidos from "./pages/Pedidos";
-import DetallesPedido from "./pages/DetallesPedido";
+import DetallesPedido from "./pages/DetallesPedidos";
 
 function App() {
   return (
