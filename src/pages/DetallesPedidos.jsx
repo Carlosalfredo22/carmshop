@@ -1,4 +1,3 @@
-src/pages/DetallesPedido.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
