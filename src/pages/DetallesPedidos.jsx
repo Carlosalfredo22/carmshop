@@ -1,21 +1,22 @@
+src/pages/DetallesPedido.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import '../style/Home.css';
-
+ 
 function DetallesPedido() {
   const [detalles, setDetalles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const token = localStorage.getItem('token');
-
+ 
   useEffect(() => {
     if (!token) {
       setError('No estás autenticado');
       setLoading(false);
       return;
     }
-
+ 
     axios.get('http://localhost:8000/api/detalles-pedido', {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -30,10 +31,10 @@ function DetallesPedido() {
         setLoading(false);
       });
   }, [token]);
-
+ 
   if (loading) return <div>Cargando detalles...</div>;
   if (error) return <div style={{ color: 'red' }}>{error}</div>;
-
+ 
   return (
     <>
       <Navbar />
@@ -60,3 +61,6 @@ function DetallesPedido() {
     </>
   );
 }
+ 
+export default DetallesPedido;
+ 
