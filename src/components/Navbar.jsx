@@ -22,9 +22,9 @@ function Navbar() {
           {/*Pagos*/}
         <li><Link to="/pagos" className="nav-link">Pagos</Link></li>
         <li><Link to="/pedidos" className="nav-link">pedidos</Link></li>
+        <Route path="/detalles-pedido" element={<DetallesPedido />} />
       </ul>
     </nav>
   );
 }
-
 export default Navbar;
