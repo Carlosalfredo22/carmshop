@@ -8,6 +8,7 @@ import Categorias from "./pages/Categorias";
 import Productos from "./pages/Productos";
 import MetodosPago from './pages/MetodosPago'; 
 import Pagos from './pages/Pagos';
+import Pedidos from './pages/Pedidos';
 
 function App() {
   return (
@@ -68,11 +69,19 @@ function App() {
         <Route
            path="/pagos"
            element={
-        <RequireAuth>
-         <Pagos />
-        </RequireAuth>
-        }
-/>
+          <RequireAuth>
+           <Pagos />
+          </RequireAuth>
+          }
+        />
+        <Route
+          path="/pedidos"
+          element={
+            <RequireAuth>
+              <Pedidos />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
