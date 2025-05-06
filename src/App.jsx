@@ -7,6 +7,7 @@ import RequireAuth from "./components/RequireAuth";
 import Categorias from "./pages/Categorias";
 import Productos from "./pages/Productos";
 import MetodosPago from './pages/MetodosPago'; 
+import Pagos from './pages/Pagos';
 
 function App() {
   return (
@@ -64,6 +65,14 @@ function App() {
         </RequireAuth>
           }
         />
+        <Route
+           path="/pagos"
+           element={
+        <RequireAuth>
+         <Pagos />
+        </RequireAuth>
+        }
+/>
       </Routes>
     </BrowserRouter>
   );
