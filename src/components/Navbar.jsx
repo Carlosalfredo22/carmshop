@@ -16,10 +16,6 @@ function Navbar() {
       <ul className="nav-list">
         <li><Link to="/" className="nav-link">Inicio</Link></li>
         <li><Link to="/login" onClick={handleLogout} className="nav-link">Cerrar sesión</Link></li>
-        <li><Link to="/Categorias" className="nav-link">Categorias</Link></li>
-        <li><Link to="/productos" className="nav-link">Productos</Link></li>
-        <li><Link to="/metodos-pago" className="nav-link">Métodos de Pago</Link></li>
-          {/*Pagos*/}
       </ul>
     </nav>
   );
