@@ -6,11 +6,10 @@ import Login from "./pages/login";
 import RequireAuth from "./components/RequireAuth";
 import Categorias from "./pages/Categorias";
 import Productos from "./pages/Productos";
-import MetodosPago from './pages/MetodosPago'; 
-import Pagos from './pages/Pagos';
-import Pedidos from './pages/Pedidos';
-import DetallesPedido from './pages/DetallesPedido';
-
+import MetodosPago from "./pages/MetodosPago";
+import Pagos from "./pages/Pagos";
+import Pedidos from "./pages/Pedidos";
+import DetallesPedido from "./pages/DetallesPedido";
 
 function App() {
   return (
@@ -63,17 +62,17 @@ function App() {
         <Route
           path="/metodos-pago"
           element={
-        <RequireAuth>
-        <MetodosPago />
-        </RequireAuth>
+            <RequireAuth>
+              <MetodosPago />
+            </RequireAuth>
           }
         />
         <Route
-           path="/pagos"
-           element={
-          <RequireAuth>
-           <Pagos />
-          </RequireAuth>
+          path="/pagos"
+          element={
+            <RequireAuth>
+              <Pagos />
+            </RequireAuth>
           }
         />
         <Route
@@ -84,18 +83,17 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route
+          path="/detalles-pedido"
+          element={
+            <RequireAuth>
+              <DetallesPedido />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
 }
-
-<Route
-  path="/detalles-pedido"
-  element={
-    <RequireAuth>
-      <DetallesPedido />
-    </RequireAuth>
-  }
-/>
 
 export default App;
