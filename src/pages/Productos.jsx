@@ -222,4 +222,4 @@ function Productos() {
   );
 }
 
-export
+export default Productos;
