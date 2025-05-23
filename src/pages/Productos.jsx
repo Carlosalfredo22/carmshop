@@ -1,65 +1,215 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from '../components/Navbar'; // Navbar importado
-import '../style/Home.css'; // Estilos generales
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import '../style/Productos.css';
 
 function Productos() {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Obtener los productos de la API
-  useEffect(() => {
-    const token = localStorage.getItem('token');
+  const [nombre, setNombre] = useState('');
+  const [descripcion, setDescripcion] = useState('');
+  const [precio, setPrecio] = useState('');
+  const [stock, setStock] = useState('');
+  const [categoriaId, setCategoriaId] = useState('');
+  const [imagenUrl, setImagenUrl] = useState('');
 
+  const [formError, setFormError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const [editandoId, setEditandoId] = useState(null);
+  const [editNombre, setEditNombre] = useState('');
+  const [editDescripcion, setEditDescripcion] = useState('');
+  const [editPrecio, setEditPrecio] = useState('');
+  const [editStock, setEditStock] = useState('');
+  const [editCategoriaId, setEditCategoriaId] = useState('');
+  const [editImagenUrl, setEditImagenUrl] = useState('');
+
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
     if (!token) {
       setError('No estás autenticado');
       setLoading(false);
       return;
     }
+    fetchProductos();
+  }, [token]);
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+  const getAuthConfig = () => ({
+    headers: { Authorization: `Bearer ${token}` },
+  });
 
+  const fetchProductos = () => {
     axios
-      .get('http://localhost:8000/api/productos', config) // Asegúrate de que la URL es correcta
-      .then((response) => {
-        setProductos(response.data);
+      .get('http://localhost:8000/api/productos', getAuthConfig())
+      .then((res) => {
+        setProductos(res.data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error('Error al cargar productos:', error);
+      .catch(() => {
         setError('Error al cargar los productos');
         setLoading(false);
       });
-  }, []);
+  };
 
-  if (loading) return <div>Cargando productos...</div>;
-  if (error) return <div style={{ color: 'red' }}>{error}</div>;
+  const resetForm = () => {
+    setNombre('');
+    setDescripcion('');
+    setPrecio('');
+    setStock('');
+    setCategoriaId('');
+    setImagenUrl('');
+    setFormError('');
+    setSuccessMessage('');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormError('');
+    setSuccessMessage('');
+
+    if (!nombre || !precio || !stock || !categoriaId || !imagenUrl) {
+      setFormError('Por favor completa todos los campos requeridos');
+      return;
+    }
+
+    const productData = {
+      nombre,
+      descripcion,
+      precio: Number(precio),
+      stock: Number(stock),
+      categoria_id: categoriaId,
+      imagen_url: imagenUrl,
+    };
+
+    axios
+      .post('http://localhost:8000/api/productos', productData, getAuthConfig())
+      .then(() => {
+        setSuccessMessage('Producto registrado correctamente.');
+        resetForm();
+        fetchProductos();
+      })
+      .catch(() => setFormError('Error al registrar el producto'));
+  };
+
+  const iniciarEdicion = (producto) => {
+    setEditandoId(producto.id);
+    setEditNombre(producto.nombre);
+    setEditDescripcion(producto.descripcion || '');
+    setEditPrecio(producto.precio);
+    setEditStock(producto.stock);
+    setEditCategoriaId(producto.categoria_id);
+    setEditImagenUrl(producto.imagen_url);
+    setFormError('');
+    setSuccessMessage('');
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    if (!editNombre || !editPrecio || !editStock || !editCategoriaId || !editImagenUrl) {
+      setFormError('Por favor completa todos los campos requeridos');
+      return;
+    }
+
+    const updatedData = {
+      nombre: editNombre,
+      descripcion: editDescripcion,
+      precio: Number(editPrecio),
+      stock: Number(editStock),
+      categoria_id: editCategoriaId,
+      imagen_url: editImagenUrl,
+    };
+
+    axios
+      .put(`http://localhost:8000/api/productos/${editandoId}`, updatedData, getAuthConfig())
+      .then(() => {
+        setEditandoId(null);
+        setFormError('');
+        setSuccessMessage('Producto actualizado correctamente.');
+        fetchProductos();
+      })
+      .catch(() => setFormError('Error al actualizar el producto'));
+  };
+
+  const handleDelete = (id) => {
+    if (!window.confirm('¿Estás seguro de eliminar este producto?')) return;
+
+    axios
+      .delete(`http://localhost:8000/api/productos/${id}`, getAuthConfig())
+      .then(() => {
+        setSuccessMessage('Producto eliminado correctamente.');
+        if (editandoId === id) setEditandoId(null);
+        fetchProductos();
+      })
+      .catch(() => setError('Error al eliminar el producto'));
+  };
+
+  if (loading) return <div className="loading">Cargando productos...</div>;
+  if (error) return <div className="error">{error}</div>;
 
   return (
-    <div style={styles.container}>
+    <>
       <Navbar />
-      <div style={styles.mainContent}>
-        <h1 style={styles.title}>Productos</h1>
-        <ul style={styles.productList}>
+      <div className="productos-container">
+        <h1>Registrar Producto</h1>
+
+        <form onSubmit={handleSubmit} className="productos-form">
+          <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Nombre" required />
+          <input type="text" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} placeholder="Descripción" />
+          <input type="number" value={precio} onChange={(e) => setPrecio(e.target.value)} placeholder="Precio" min="0" required />
+          <input type="number" value={stock} onChange={(e) => setStock(e.target.value)} placeholder="Stock" min="0" required />
+          <select value={categoriaId} onChange={(e) => setCategoriaId(e.target.value)} required>
+            <option value="">Seleccionar categoría</option>
+            <option value="1">Ropa</option>
+            <option value="2">Accesorios</option>
+          </select>
+          <input type="text" value={imagenUrl} onChange={(e) => setImagenUrl(e.target.value)} placeholder="URL Imagen" required />
+          <button type="submit">Registrar</button>
+        </form>
+
+        {formError && <p className="form-error">{formError}</p>}
+        {successMessage && <p className="form-success">{successMessage}</p>}
+
+        <h2>Lista de Productos</h2>
+        <ul className="productos-list">
           {productos.length > 0 ? (
             productos.map((producto) => (
-              <li key={producto.id} style={styles.productCard}>
-                <img
-                  src={`http://localhost:8000/images/${producto.imagen_url}`} // Ruta de imagen
-                  alt={producto.nombre}
-                  style={styles.productImage}
-                />
-                <div>
-                  <h3 style={styles.productName}>{producto.nombre}</h3>
-                  <p style={styles.productDescription}>{producto.descripcion}</p>
-                  <p style={styles.productPrice}>Precio: ${producto.precio}</p>
-                  <p style={styles.productStock}>Stock: {producto.stock}</p>
-                </div>
+              <li key={producto.id} className="producto-item">
+                {editandoId === producto.id ? (
+                  <form onSubmit={handleUpdate} className="productos-form edit">
+                    <input type="text" value={editNombre} onChange={(e) => setEditNombre(e.target.value)} placeholder="Nombre" required />
+                    <input type="text" value={editDescripcion} onChange={(e) => setEditDescripcion(e.target.value)} placeholder="Descripción" />
+                    <input type="number" value={editPrecio} onChange={(e) => setEditPrecio(e.target.value)} placeholder="Precio" required />
+                    <input type="number" value={editStock} onChange={(e) => setEditStock(e.target.value)} placeholder="Stock" required />
+                    <select value={editCategoriaId} onChange={(e) => setEditCategoriaId(e.target.value)} required>
+                      <option value="">Seleccionar categoría</option>
+                      <option value="1">Ropa</option>
+                      <option value="2">Accesorios</option>
+                    </select>
+                    <input type="text" value={editImagenUrl} onChange={(e) => setEditImagenUrl(e.target.value)} placeholder="URL Imagen" required />
+                    <div className="action-buttons">
+                      <button type="submit">Guardar</button>
+                      <button type="button" onClick={() => setEditandoId(null)}>Cancelar</button>
+                    </div>
+                  </form>
+                ) : (
+                  <>
+                    <div><strong>{producto.nombre}</strong></div>
+                    <div>{producto.descripcion}</div>
+                    <div>Precio: ${producto.precio}</div>
+                    <div>Stock: {producto.stock}</div>
+                    <div>Categoría: {producto.categoria_id === 1 ? 'Ropa' : 'Accesorios'}</div>
+                    <img src={producto.imagen_url} alt={producto.nombre} className="producto-img" />
+                    <div className="action-buttons">
+                      <button onClick={() => iniciarEdicion(producto)}>Editar</button>
+                      <button onClick={() => handleDelete(producto.id)}>Eliminar</button>
+                    </div>
+                  </>
+                )}
               </li>
             ))
           ) : (
@@ -67,68 +217,9 @@ function Productos() {
           )}
         </ul>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 
-const styles = {
-  container: {
-    backgroundColor: '#f5f0e6', // Fondo claro en tonos café
-    padding: '20px',
-    minHeight: '100vh',
-  },
-  mainContent: {
-    textAlign: 'center',
-  },
-  title: {
-    fontSize: '2rem',
-    color: '#4d3c28', // Título en tono café oscuro
-    marginBottom: '30px',
-  },
-  productList: {
-    listStyle: 'none',
-    padding: 0,
-  },
-  productCard: {
-    backgroundColor: '#fff',
-    border: '1px solid #bfa980', // Borde dorado suave
-    borderRadius: '12px',
-    padding: '15px',
-    marginBottom: '20px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '20px',
-    boxShadow: '0 4px 6px rgba(191, 169, 128, 0.2)',
-    transition: 'transform 0.3s ease',
-    cursor: 'pointer',
-  },
-  productCardHover: {
-    transform: 'scale(1.05)', // Hover para agrandar un poco la tarjeta
-  },
-  productImage: {
-    width: '100px',
-    borderRadius: '8px',
-  },
-  productName: {
-    fontSize: '1.5rem',
-    color: '#4d3c28', // Título del producto en color café oscuro
-    margin: '0 0 10px',
-  },
-  productDescription: {
-    fontSize: '1rem',
-    color: '#4d3c28', // Descripción en color café
-    margin: '0',
-  },
-  productPrice: {
-    fontSize: '1.1rem',
-    color: '#4d3c28', // Precio en color café
-    margin: '5px 0',
-  },
-  productStock: {
-    fontSize: '1rem',
-    color: '#4d3c28', // Stock en color café
-    margin: '0',
-  },
-};
-
-export default Productos;
+export
