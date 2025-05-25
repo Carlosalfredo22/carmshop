@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import HomePage from "./pages/Homepage"; // Página pública
+import HomeAdmin from "./pages/HomeAdmin"; // Importa con el nombre correcto
+import HomeCliente from "./pages/Clientes/HomeCliente"; // Importa con el nombre correcto
+import Login from "./pages/login";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
-import Login from "./pages/login";
 import RequireAuth from "./components/RequireAuth";
 import Categorias from "./pages/Categorias";
 import Productos from "./pages/Productos";
@@ -10,20 +12,25 @@ import MetodosPago from "./pages/MetodosPago";
 import Pagos from "./pages/Pagos";
 import Pedidos from "./pages/Pedidos";
 import DetallesPedido from "./pages/DetallesPedidos";
+import NoAutorizando from "./pages/Clientes/NoAutorizando"; // Importa con el nombre correcto
+import RequireAuthCliente from "./components/RequireAuthCliente"; // Importa con el nombre correcto
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Login es público */}
+        {/* Homepage pública, sin protección */}
+        <Route path="/" element={<HomePage />} />
+
+        {/* Login pública */}
         <Route path="/login" element={<Login />} />
 
-        {/* Las siguientes rutas están protegidas */}
+        {/* Rutas protegidas */}
         <Route
-          path="/"
+          path="/admin"  // cambia aquí la ruta para HomeAdmin
           element={
             <RequireAuth>
-              <Home />
+              <HomeAdmin />
             </RequireAuth>
           }
         />
@@ -89,6 +96,22 @@ function App() {
             <RequireAuth>
               <DetallesPedido />
             </RequireAuth>
+          }
+        />
+        {/* // cambia aquí la ruta para Homecliente */}
+         {/* Rutas protegidas */}
+        <Route
+          path="/cliente"  // cambia aquí la ruta para HomeAdmin
+          element={
+            <RequireAuthCliente>
+              <HomeCliente />
+            </RequireAuthCliente>
+          }
+        />
+        <Route
+          path="/NoAutorizado"  // cambia aquí la ruta para HomeAdmin
+          element={
+              <NoAutorizando  />
           }
         />
       </Routes>
