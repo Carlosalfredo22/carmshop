@@ -34,20 +34,20 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/categorias">Categorías</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/metodos-pago">Métodos de Pago</Link>
+              <Link className="nav-link" to="/categorias">Prendas</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/productos">Productos</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/pagos">Pagos</Link>
+              <Link className="nav-link" to="/metodos-pago">Opciones de Pagos</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/detalles-pedido">Detalles de Pedidos</Link>
+              <Link className="nav-link" to="/pagos">Pagos</Link>
             </li>
+            {/* <li className="nav-item">
+              <Link className="nav-link" to="/detalles-pedido">Detalles de Pedidos</Link>
+            </li> */}
             <li className="nav-item">
               <Link className="nav-link" to="/pedidos">Pedidos</Link>
             </li>

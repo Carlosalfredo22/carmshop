@@ -125,7 +125,7 @@ function Categorias() {
     <div className="home-container d-flex flex-column min-vh-100">
       <Navbar />
       <div className="home-content categorias-container flex-grow-1">
-        <h1 className="categorias-title">Categorías</h1>
+        <h1 className="categorias-title">Prendas</h1>
 
         <form className="categoria-form" onSubmit={handleSubmit}>
           <div>

@@ -144,7 +144,7 @@ function MetodosPago() {
     <div className="home-container d-flex flex-column min-vh-100">
       <Navbar />
       <div className="home-content metodos-container flex-grow-1">
-        <h1>Métodos de Pago</h1>
+        <h1>Opciones de Pagos</h1>
 
         <form onSubmit={handleSubmit} className="metodo-form">
           <div>
