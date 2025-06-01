@@ -165,7 +165,7 @@ function MetodosPago() {
               onChange={(e) => setDescripcion(e.target.value)}
             />
           </div>
-          <button type="submit">Registrar Método</button>
+          <button type="submit">Registrar</button>
 
           {formError && <p className="error-message">{formError}</p>}
           {successMessage && <p className="success-message">{successMessage}</p>}
@@ -199,7 +199,7 @@ function MetodosPago() {
                     <>
                       <div>{metodo.nombre}</div>
                       <div>{metodo.descripcion}</div>
-                      <button onClick={() => iniciarEdicion(metodo)}>Editar</button>{' '}
+                      <button onClick={() => iniciarEdicion(metodo)}>Actualizar</button>{' '}
                       <button onClick={() => handleDelete(metodo.id)}>Eliminar</button>
                     </>
                   )}

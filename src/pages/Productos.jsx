@@ -205,7 +205,7 @@ function Productos() {
                     <div>Categoría: {producto.categoria_id === 1 ? 'Ropa' : 'Accesorios'}</div>
                     <img src={producto.imagen_url} alt={producto.nombre} className="producto-img" />
                     <div className="action-buttons">
-                      <button onClick={() => iniciarEdicion(producto)}>Editar</button>
+                      <button onClick={() => iniciarEdicion(producto)}>Actualizar</button>
                       <button onClick={() => handleDelete(producto.id)}>Eliminar</button>
                     </div>
                   </>

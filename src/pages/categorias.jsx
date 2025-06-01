@@ -146,7 +146,7 @@ function Categorias() {
               onChange={(e) => setDescripcion(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn guardar">Guardar Categoría</button>
+          <button type="submit" className="btn guardar">Registrar</button>
           {formError && <p className="error">{formError}</p>}
           {successMessage && <p className="success">{successMessage}</p>}
         </form>
@@ -190,7 +190,7 @@ function Categorias() {
                   <>
                     <p><strong>{categoria.nombre}</strong></p>
                     <p>{categoria.descripcion}</p>
-                    <button className="btn editar" onClick={() => iniciarEdicion(categoria)}>Editar</button>
+                    <button className="btn editar" onClick={() => iniciarEdicion(categoria)}>Actualizar</button>
                     <button className="btn eliminar" onClick={() => handleDelete(categoria.id)}>Eliminar</button>
                   </>
                 )}
