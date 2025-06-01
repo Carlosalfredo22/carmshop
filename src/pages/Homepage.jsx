@@ -134,7 +134,11 @@ const App = () => {
       <section className="article container mb-3" id="informacion">
         <h2 className="title-article mb-2">Información</h2>
         <p className="paragraph-article mb-3">
-          Aquí encontrarás información útil sobre nuestros productos y servicios.
+        En Carmabeshop ofrecemos una selección cuidadosamente seleccionada de ropa para mujer y hombre , con diseños modernos, cómodos y accesibles. Entre nuestros productos encontrarás:
+
+Blusas, camisetas y tops de temporada
+
+Pantalones, jeans, shorts y faldas
         </p>
         <div className="galery row g-3">
           {galleryImages.map((img, i) => (
@@ -163,7 +167,9 @@ const App = () => {
       <section className="article container mb-3" id="noticias">
         <h2 className="title-article mb-2">Noticias</h2>
         <p className="paragraph-article">
-          Entérate de las últimas novedades y actualizaciones de Carmabe Shop.
+        ¡Nueva Colección "Vibra de Verano 2025"!
+Prepárate para lucir increíble con nuestra nueva línea llena de colores vibrantes, telas frescas y diseños exclusivos que marcan tendencia. Además, por lanzamiento, disfruta de envío gratis en pedidos superiores a $30 y participa automáticamente en el sorteo de una gift card de $50.
+¡Carmabeshop sigue creciendo contigo y para ti!
         </p>
       </section>
 
@@ -171,7 +177,7 @@ const App = () => {
       <section className="article container mb-3" id="sobrenosotros">
         <h2 className="title-article mb-2">Sobre Nosotros</h2>
         <p className="paragraph-article">
-          Somos una tienda dedicada a ofrecer moda de calidad y buen servicio desde 2020.
+          En Carmabeshop nos apasiona ofrecer moda de calidad con estilo único desde 2020. Cada prenda está pensada para resaltar tu personalidad y comodidad. Nuestro compromiso no termina con la venta, comienza con tu satisfacción. Valoramos profundamente a cada cliente, porque son el corazón de nuestra tienda. Gracias por confiar en nosotros y ser parte de esta comunidad con estilo.
         </p>
       </section>
 
