@@ -227,7 +227,7 @@ function Pagos() {
             />
           </div>
           <button type="submit" className="btn-registrar">
-            Registrar Pago
+            Registrar
           </button>
 
           {formError && <p className="error-msg">{formError}</p>}
@@ -305,13 +305,13 @@ function Pagos() {
                         onClick={() => iniciarEdicion(pago)}
                         className="btn-guardar"
                       >
-                        Editar
+                        Actualizar
                       </button>{' '}
                       <button
                         onClick={() => handleDelete(pago.id)}
                         className="btn-cancelar"
                       >
-                        Eliminar
+                        Cancelar
                       </button>
                     </>
                   )}

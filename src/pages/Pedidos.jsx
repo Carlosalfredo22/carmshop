@@ -274,14 +274,14 @@ function Pedidos() {
                       className="btn-editar"
                       aria-label={`Editar pedido ${pedido.id}`}
                     >
-                      Editar
+                      Actualizar
                     </button>
                     <button
                       onClick={() => eliminarPedido(pedido.id)}
                       className="btn-eliminar"
                       aria-label={`Eliminar pedido ${pedido.id}`}
                     >
-                      Eliminar
+                      Cancelar
                     </button>
                   </div>
                 </>

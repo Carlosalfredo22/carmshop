@@ -200,7 +200,7 @@ function MetodosPago() {
                       <div>{metodo.nombre}</div>
                       <div>{metodo.descripcion}</div>
                       <button onClick={() => iniciarEdicion(metodo)}>Actualizar</button>{' '}
-                      <button onClick={() => handleDelete(metodo.id)}>Eliminar</button>
+                      <button onClick={() => handleDelete(metodo.id)}>Cancelar</button>
                     </>
                   )}
                 </li>
