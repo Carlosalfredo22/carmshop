@@ -117,18 +117,7 @@ const App = () => {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* Banner */}
-      <section
-        className="banner text-center py-3 mb-3"
-        style={{ backgroundColor: "#f8f9fa" }}
-      >
-        <h1 className="title-banner display-5 mb-2">Inicio de sección</h1>
-        <a href="#" className="btn btn-primary btn-lg">
-          BOTÓN
-        </a>
-      </section>
+      </section>   
 
       {/* Artículo - Información */}
       <section className="article container mb-3" id="informacion">
@@ -192,5 +181,6 @@ Prepárate para lucir increíble con nuestra nueva línea llena de colores vibra
     </>
   );
 };
+
 
 export default App;
