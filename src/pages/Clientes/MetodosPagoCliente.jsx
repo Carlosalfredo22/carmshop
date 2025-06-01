@@ -186,8 +186,8 @@ function MetodosPagoCliente() {
                         {metodo.descripcion && <span>{metodo.descripcion}</span>}
                       </div>
                       <div className="acciones-metodo">
-                        <button onClick={() => iniciarEdicion(metodo)} className="btn-editar">Editar</button>
-                        <button onClick={() => handleDelete(metodo.id)} className="btn-eliminar">Eliminar</button>
+                        <button onClick={() => iniciarEdicion(metodo)} className="btn-editar">Actualizar</button>
+                        <button onClick={() => handleDelete(metodo.id)} className="btn-eliminar">Cancelar</button>
                       </div>
                     </div>
                   )}
