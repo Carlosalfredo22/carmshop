@@ -14,7 +14,6 @@ import Pedidos from "./pages/Pedidos";
 import DetallesPedido from "./pages/DetallesPedidos";
 import NoAutorizando from "./pages/Clientes/NoAutorizando"; // Importa con el nombre correcto
 import RequireAuthCliente from "./components/RequireAuthCliente"; // Importa con el nombre correcto
-import NavbarCliente from '. /components/NavbarCliente'; // <-- asegúrate que esté bien
 import CategoriasCliente from './pages/Clientes/CategoriasCliente';
 import ProductosCliente  from './pages/Clientes/ProductosCliente';
 import PedidosCliente from './pages/Clientes/PedidosCliente';
