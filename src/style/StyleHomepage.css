@@ -1,10 +1,8 @@
 /* Reset y base */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
+  background-color: #e6ccf2; /* morado lila suave */
 }
+
 
 /* Logo */
 .logo {
@@ -13,7 +11,7 @@ body {
 
 /* Navbar (usando Bootstrap override si es necesario) */
 .navbar {
-    background-color: #333 !important;
+    background-color: #982c2c !important;
     padding: 0.75rem 1rem;
 }
 .navbar .nav-link {
@@ -130,7 +128,7 @@ body {
 
 /* Footer */
 .footer {
-    background-color: #333;
+    background-color: #f48484;
     color: white;
     text-align: center;
     padding: 30px 20px;
