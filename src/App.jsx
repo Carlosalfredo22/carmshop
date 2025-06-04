@@ -6,7 +6,7 @@ import Login from "./pages/login";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import RequireAuth from "./components/RequireAuth";
-import Categorias from "./pages/Categorias";
+import Categorias from "./pages/categorias";
 import Productos from "./pages/Productos";
 import MetodosPago from "./pages/MetodosPago";
 import Pagos from "./pages/Pagos";

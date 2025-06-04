@@ -8,7 +8,7 @@ function Home() {
       <Navbar />
       <main className="home-content">
         <h1 className="home-title">Bienvenido a la Página de Inicio</h1>
-        <p className="home-text">Has iniciado sesión correctamente.</p>
+        <p className="home-text">Has iniciado correctamente.</p>
       </main>
       <Footer />
     </div>
